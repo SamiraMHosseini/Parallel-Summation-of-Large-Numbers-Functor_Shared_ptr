@@ -68,7 +68,7 @@ int main()
 
 		
 		std::shared_ptr<Sum> sumObj = std::make_shared<Sum>();
-		//workers.push_back(std::thread(std::ref(*sumNumObj), start, end));
+		//workers.push_back(std::thread(std::ref(*sumObj), start, end));
 		//The following is more efficient
 		workers.emplace_back(std::ref(*sumObj), start, end);
 
@@ -97,7 +97,7 @@ int main()
 
 		
 		std::shared_ptr<Sum> sumObj = std::make_shared<Sum>();
-		//workers.push_back(std::thread(std::ref(*sumNumObj), counter, number_of_items));
+		//workers.push_back(std::thread(std::ref(*sumObj), counter, number_of_items));
 		//The following is more efficient
 		workers.emplace_back(std::ref(*sumObj), counter, number_of_items);
 
@@ -141,11 +141,11 @@ int main()
 
 	std::cout << "total: " << vectAccumulate(vectSum) << "\n";
 
-	//Release the memory
-	/*for (auto& item : vectSum)
-	{
-		delete item;
-	}*/
+	/*
+	std::shared_ptr is that it helps manage memory by automatically deallocating 
+	the memory when the last shared pointer pointing to the object is destroyed or reset.
+	*/
+	
 
 
 }
