@@ -20,3 +20,10 @@ In the given code, the Sum object is referenced by two shared pointers. One is t
 So when we say "the Sum object," we are referring to the instance of the Sum class that is being managed by the shared pointers created in the code.
 
 
+At the end of the for-loop, the sumObj shared pointer goes out of scope, which means that the reference count of the Sum object it points to is decremented by 1. However, the Sum object is still being referenced by the vectSum vector, which holds another copy of the same shared pointer. This means that the reference count of the Sum object remains at 1 even though the sumObj shared pointer has gone out of scope.
+
+Because the Sum object's reference count is still 1, it will not be deleted. The Sum object will remain in memory and continue to be accessible through the shared pointer held in the vectSum vector.
+
+This means that the Sum object will not be deleted until all shared pointers that reference it have gone out of scope or have been destroyed. In this case, the vectSum vector is holding a copy of the shared pointer, which will also go out of scope or be destroyed at some point in the future. Once that happens, the reference count of the Sum object will be decremented by 1 again. If, at that point, the reference count reaches 0, the Sum object will be deleted automatically by the shared pointer's destructor.
+
+In short, the Sum object will be deleted only when all shared pointers that reference it have gone out of scope or have been destroyed, and its reference count reaches 0.
