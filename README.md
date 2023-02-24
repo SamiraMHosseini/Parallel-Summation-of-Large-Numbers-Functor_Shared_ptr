@@ -27,3 +27,16 @@ Because the Sum object's reference count is still 1, it will not be deleted. The
 This means that the Sum object will not be deleted until all shared pointers that reference it have gone out of scope or have been destroyed. In this case, the vectSum vector is holding a copy of the shared pointer, which will also go out of scope or be destroyed at some point in the future. Once that happens, the reference count of the Sum object will be decremented by 1 again. If, at that point, the reference count reaches 0, the Sum object will be deleted automatically by the shared pointer's destructor.
 
 In short, the Sum object will be deleted only when all shared pointers that reference it have gone out of scope or have been destroyed, and its reference count reaches 0.
+  
+ # Code explanations:
+  In the given code, a shared pointer is being used to manage the memory of an object of the Sum class. std::shared_ptr is a smart pointer that enables shared ownership of a dynamically allocated object. It maintains a reference count for the number of shared pointers that refer to the object. When the reference count drops to zero, the object is automatically deleted.
+
+Each time a std::shared_ptr object is copied or assigned, the reference count is incremented. When a std::shared_ptr object goes out of scope, the reference count is decremented. If the reference count becomes zero, the std::shared_ptr destructor deletes the managed object.
+
+In the given code, a std::shared_ptr object named sumObj is created using the std::make_shared function. The Sum object is dynamically allocated and managed by the std::shared_ptr. The workers.emplace_back function is then called with *sumObj as the first argument, which passes a reference to the Sum object to the worker thread.
+
+After that, the sumObj shared pointer is copied into the vectSum vector using the std::vector::at function. This means that the memory address of the Sum object is being copied into the vector, and the reference count of the shared pointer is incremented. As a result, the reference count for the Sum object becomes 2.
+
+At the end of the for-loop, the sumObj shared pointer goes out of scope, and its reference count is decremented. However, since the Sum object is also referenced by the vectSum vector, its reference count remains at 1. Therefore, the Sum object will not be deleted until all the shared pointers referencing it go out of scope or are destroyed.
+
+In summary, the shared pointer in the given code manages the memory of a dynamically allocated Sum object, and its reference count is incremented each time the shared pointer is copied or assigned. After the for-loop, the Sum object will not be deleted since its reference count is still 1, and it will continue to be accessible through the vectSum vector.
