@@ -4,7 +4,7 @@
 #include <algorithm>
 
 typedef unsigned long long ULLONG;
- 
+
 
 struct Sum
 {
@@ -34,7 +34,7 @@ ULLONG vectAccumulate(std::vector<std::shared_ptr<Sum>>& vect)
 		total += item->sum;
 
 	}
-	
+
 	return total;
 }
 
@@ -66,7 +66,7 @@ int main()
 
 		std::cout << start << "  , " << end << " , " << index << '\n';
 
-		
+
 		std::shared_ptr<Sum> sumObj = std::make_shared<Sum>();
 		//workers.push_back(std::thread(std::ref(*sumObj), start, end));
 		//The following is more efficient
@@ -84,7 +84,6 @@ int main()
 	was allocated by new inside the loop.
 	*/
 
-
 		vectSum.at(index) = sumObj; //It is being copied (we are copying the memory address into the vector)
 		//OR
 		//vectSum.push_back(sumObj);
@@ -95,7 +94,7 @@ int main()
 	{
 		std::cout << counter << "  , " << number_of_items << " , " << index << '\n';
 
-		
+
 		std::shared_ptr<Sum> sumObj = std::make_shared<Sum>();
 		//workers.push_back(std::thread(std::ref(*sumObj), counter, number_of_items));
 		//The following is more efficient
@@ -142,10 +141,10 @@ int main()
 	std::cout << "total: " << vectAccumulate(vectSum) << "\n";
 
 	/*
-	std::shared_ptr is that it helps manage memory by automatically deallocating 
+	std::shared_ptr is that it helps manage memory by automatically deallocating
 	the memory when the last shared pointer pointing to the object is destroyed or reset.
 	*/
-	
+
 
 
 }
