@@ -35,5 +35,4 @@ So both functor and the pointer in the functors vector point to the same dynamic
 
 It's worth noting that because both functor and the pointer in the vector point to the same memory, modifying the object through one pointer will also affect the object accessed through the other pointer. In this code, that doesn't seem to be a problem because the objects are read-only, but it's something to be aware of in general.
 
-# Link to the source for the solution
-https://www.youtube.com/watch?v=3aqxaZsvn80&list=PLHn7_PzMqzs7c1Ywzpy58SK9zqcNnXQ_B&ab_channel=arisaif
+
