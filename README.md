@@ -28,7 +28,7 @@ This means that the Sum object will not be deleted until all shared pointers tha
 
 In short, the Sum object will be deleted only when all shared pointers that reference it have gone out of scope or have been destroyed, and its reference count reaches 0.
   
- # Code explanations:
+ # Using std::shared_ptr for Safe and Efficient Memory Management in C++
   In the given code, a shared pointer is being used to manage the memory of an object of the Sum class. std::shared_ptr is a smart pointer that enables shared ownership of a dynamically allocated object. It maintains a reference count for the number of shared pointers that refer to the object. When the reference count drops to zero, the object is automatically deleted.
 
 Each time a std::shared_ptr object is copied or assigned, the reference count is incremented. When a std::shared_ptr object goes out of scope, the reference count is decremented. If the reference count becomes zero, the std::shared_ptr destructor deletes the managed object.
