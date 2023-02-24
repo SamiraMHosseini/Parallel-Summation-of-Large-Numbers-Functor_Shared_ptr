@@ -10,7 +10,7 @@ Functors are implemented as classes that overload the function call operator ope
 When you create an instance of a functor class and call it like a function, 
 the operator() function is executed. This allows you to use the functor as if it were a function.
 
-# std::shared_ptr in C++
+# std::shared_ptr used in this code example:
 In the code, the Sum object refers to an instance of the Sum class that is dynamically allocated using the new operator. The std::shared_ptr is used to manage the memory of this object.
 
 When the std::shared_ptr is created using std::make_shared<Sum>(), it dynamically allocates a new instance of the Sum class, and the shared pointer takes ownership of the object. The Sum object is then referred to by the shared pointer, and it exists in memory as long as at least one shared pointer points to it.
