@@ -87,7 +87,7 @@ int main()
 
 		vectSum.at(index) = sumObj; //It is being copied (we are copying the memory address into the vector)
 		//OR
-		//vectSum.push_back(sumNumObj);
+		//vectSum.push_back(sumObj);
 
 	}
 
@@ -115,7 +115,7 @@ int main()
 
 		vectSum.at(index) = (sumObj); //It is being copied (we are copying the memory address into the vector)
 		//OR
-		//vectSum.push_back(sumNumObj);
+		//vectSum.push_back(sumObj);
 
 		/*
 
